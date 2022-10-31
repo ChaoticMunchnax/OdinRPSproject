@@ -32,11 +32,12 @@ function oneRound(getComputerChoice, playerSelection){
             console.log(oneRound(getComputerChoice(),playerSelection))
         }
     }
-    let playerSelection = prompt("Type rock paper scissors");
+    let playerInput = prompt("Please type: Rock Paper or Scissors!")
+    let playerSelection = playerInput.toLowerCase()
+    game()
     // let Win = 0;
     // let Loss = 0;
     // let Tie = 0;
-    console.log(game())
     // console.log(`You Won ${Win} times!\n You Tied ${Tie} times!\n You lost ${Loss} times....`)
 // console.log(oneRound(getComputerChoice(),playerSelection))
 
