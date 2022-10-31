@@ -1,5 +1,3 @@
-console.log("Working...")
-// botInput;
 function isZero(){
     let randomNumber = (Math.floor(Math.random() * 10));
     
@@ -10,18 +8,57 @@ function isZero(){
         return randomNumber
     }
 }
-//Rock = 1 to 3,
-// Paper = 4 to 6, 
-//Scissors = 7 to 9
 function round(){
-    if (botChoice > 6 && playerChoice == "paper" || botChoice > 3 && playerChoice == "rock" || botChoice > 0 && playerChoice == "scissors"){
-        return `You lost ${botChoice} beats ${playerChoice}`;
+    if (scissors && playerChoice == "paper"){
+        loss += 1
+        return `You lost scissors beats ${playerChoice}`;
+    }
+    else if ( paper && playerChoice == "rock" ){
+        loss += 1
+        return `You lost paper beats ${playerChoice}`;
+    }
+    else if (rock && playerChoice == "scissors"){
+        loss += 1
+        return `You lost rock beats ${playerChoice}`;
+    }
+    else if (scissors && playerChoice =="rock"){
+        win += 1
+        return `You won! ${playerChoice} beats scissors`
+    } 
+    else if (paper && playerChoice == "scissors"){
+        win += 1
+        return `You won! ${playerChoice} beats paper`
+    }  
+    else if(rock && playerChoice == "paper") {
+        win += 1
+     return `You won! ${playerChoice} beats rock`;
     }
     else{
-        return `You won! ${playerChoice} beats ${botChoice}`;
+        tie += 1;
+        return "Tie!"
     }
+}
+
+function game(){
+    for (let i = 0; i < 6; i++){
+        console.log(round())
+        console.log(botChoice)
+        // playerChoice = prompt('Please type rock, paper, or scissors').toLowerCase();
+        console.log(`Round ${iRound = i + 1}`)
+    }
+    console.log(`You won ${win} times. You lost ${loss}. You tied ${tie})`);
 
 }
-const playerChoice = "paper";
-const botChoice = isZero();
-console.log(round())
+// let playerChoice = prompt('Please type rock, paper, or scissors').toLowerCase();
+let playerChoice = 'paper'
+let tie = 0;
+let win = 0;
+let loss = 0;
+let iRound = 0;
+let botChoice = isZero();
+
+const paper = botChoice > 3 && botChoice < 7;
+const rock = botChoice > 0 && botChoice < 4;
+const scissors = botChoice > 7 && botChoice < 10;
+
+game()
